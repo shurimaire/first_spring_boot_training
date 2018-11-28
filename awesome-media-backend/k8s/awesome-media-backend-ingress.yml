@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: awesome-media-backend-ingress
+  annotations:
+    ingress.bluemix.net/rewrite-path: serviceName=awesome-media-backend-service rewrite=/;
+spec:
+  rules:
+  - host: awesome-media-edu06.cloudzcp.io
+    http:
+      paths: 
+      - path: /backend
+        backend:
+          serviceName: awesome-media-backend-service
+          servicePort: 8090
